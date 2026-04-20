@@ -160,6 +160,105 @@
       text-align: right;
     }
 
+    .instructions {
+      margin-bottom: 26px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 248, 240, 0.94));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .instructions summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 20px 22px;
+    }
+
+    .instructions summary::-webkit-details-marker { display: none; }
+
+    .instructions-title {
+      display: grid;
+      gap: 6px;
+    }
+
+    .instructions-kicker {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(45, 42, 38, 0.68);
+    }
+
+    .instructions-headline {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+      letter-spacing: -0.03em;
+    }
+
+    .instructions-arrow {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(77, 58, 38, 0.06);
+      color: var(--muted);
+      font-size: 1.2rem;
+      transition: transform 180ms ease, background 180ms ease;
+      flex-shrink: 0;
+    }
+
+    .instructions[open] .instructions-arrow {
+      transform: rotate(180deg);
+      background: rgba(220, 236, 255, 0.9);
+    }
+
+    .instructions-body {
+      padding: 0 22px 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .instruction-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .instruction-card {
+      border-radius: 22px;
+      padding: 18px;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: rgba(255,255,255,0.76);
+    }
+
+    .instruction-card:nth-child(1) { background: linear-gradient(180deg, rgba(255, 232, 239, 0.84), rgba(255,255,255,0.9)); }
+    .instruction-card:nth-child(2) { background: linear-gradient(180deg, rgba(220, 236, 201, 0.84), rgba(255,255,255,0.9)); }
+    .instruction-card:nth-child(3) { background: linear-gradient(180deg, rgba(220, 236, 255, 0.84), rgba(255,255,255,0.9)); }
+    .instruction-card:nth-child(4) { background: linear-gradient(180deg, rgba(255, 240, 184, 0.84), rgba(255,255,255,0.92)); }
+    .instruction-card:nth-child(5) { background: linear-gradient(180deg, rgba(232, 223, 255, 0.84), rgba(255,255,255,0.9)); }
+
+    .instruction-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(45, 42, 38, 0.68);
+      margin-bottom: 10px;
+    }
+
+    .instruction-copy {
+      color: var(--text);
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -220,6 +319,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
       gap: 18px;
+      margin-bottom: 18px;
     }
 
     .panel {
@@ -276,7 +376,8 @@
     }
 
     .article-card,
-    .bridge-card {
+    .bridge-card,
+    .schedule-card {
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.75);
       border-radius: 22px;
@@ -285,14 +386,16 @@
     }
 
     .article-card:hover,
-    .bridge-card:hover {
+    .bridge-card:hover,
+    .schedule-card:hover {
       transform: translateY(-2px);
       border-color: rgba(77, 58, 38, 0.16);
       box-shadow: 0 12px 26px rgba(82, 61, 42, 0.09);
     }
 
     .article-top,
-    .bridge-top {
+    .bridge-top,
+    .schedule-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -301,7 +404,10 @@
     }
 
     .index-chip,
-    .date-chip {
+    .date-chip,
+    .schedule-chip,
+    .month-eyebrow,
+    .calendar-weekday {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.78rem;
       letter-spacing: 0.04em;
@@ -310,7 +416,8 @@
     }
 
     .article-title,
-    .bridge-title {
+    .bridge-title,
+    .schedule-title {
       margin: 0;
       font-size: 1.05rem;
       line-height: 1.45;
@@ -318,7 +425,8 @@
     }
 
     .article-meta,
-    .bridge-meta {
+    .bridge-meta,
+    .schedule-meta {
       margin-top: 14px;
       padding-top: 14px;
       border-top: 1px dashed rgba(77, 58, 38, 0.12);
@@ -331,7 +439,8 @@
       flex-wrap: wrap;
     }
 
-    .bridge-list {
+    .bridge-list,
+    .schedule-list {
       display: grid;
       gap: 12px;
     }
@@ -371,6 +480,163 @@
     .badge-posted { background: var(--posted-bg); color: var(--posted-text); border-color: rgba(34, 86, 64, 0.12); }
     .badge-default { background: var(--lavender); color: #5b4b74; border-color: rgba(91, 75, 116, 0.12); }
 
+    .calendar-panel {
+      display: grid;
+      gap: 18px;
+    }
+
+    .calendar-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .calendar-months {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .month-card {
+      border-radius: 24px;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,248,240,0.82));
+      padding: 16px;
+      min-width: 0;
+    }
+
+    .month-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .month-title {
+      margin: 4px 0 0;
+      font-family: 'Fraunces', serif;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+    }
+
+    .calendar-weekdays,
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .calendar-weekdays {
+      margin-bottom: 8px;
+    }
+
+    .calendar-weekday {
+      text-align: center;
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+
+    .calendar-day {
+      min-height: 92px;
+      border-radius: 18px;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: rgba(255,255,255,0.72);
+      padding: 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      display: grid;
+      align-content: start;
+      gap: 8px;
+      width: 100%;
+      font: inherit;
+      color: inherit;
+    }
+
+    .calendar-day:hover {
+      transform: translateY(-1px);
+      border-color: rgba(77, 58, 38, 0.16);
+      box-shadow: 0 12px 22px rgba(82, 61, 42, 0.08);
+    }
+
+    .calendar-day.is-other-month {
+      opacity: 0.42;
+      background: rgba(255,255,255,0.4);
+    }
+
+    .calendar-day.is-today {
+      border-color: rgba(38, 75, 136, 0.28);
+      box-shadow: inset 0 0 0 1px rgba(38, 75, 136, 0.12);
+    }
+
+    .calendar-day.is-selected {
+      background: linear-gradient(180deg, rgba(220,236,255,0.95), rgba(255,255,255,0.92));
+      border-color: rgba(38, 75, 136, 0.22);
+      box-shadow: 0 16px 26px rgba(38, 75, 136, 0.12);
+    }
+
+    .calendar-day.has-items {
+      background: linear-gradient(180deg, rgba(255,250,243,0.95), rgba(255,255,255,0.9));
+    }
+
+    .day-number {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .day-markers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .day-marker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 7px;
+      border-radius: 999px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+    }
+
+    .day-marker.is-article { background: rgba(220, 236, 255, 0.95); color: #264b88; border-color: rgba(38, 75, 136, 0.12); }
+    .day-marker.is-bridge { background: rgba(255, 240, 184, 0.95); color: #7a5a12; border-color: rgba(122, 90, 18, 0.12); }
+    .day-marker.is-overflow { background: rgba(77, 58, 38, 0.06); color: var(--muted); }
+
+    .calendar-detail {
+      border-radius: 24px;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,246,237,0.92));
+      padding: 18px;
+      position: sticky;
+      top: 20px;
+      min-height: 240px;
+    }
+
+    .calendar-detail-date {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      letter-spacing: -0.03em;
+      margin: 4px 0 16px;
+    }
+
+    .detail-note {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
     .empty,
     .error {
       border-radius: 22px;
@@ -408,13 +674,19 @@
 
     @media (max-width: 980px) {
       .stats,
-      .board,
       .article-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .board {
+      .board,
+      .calendar-layout,
+      .calendar-months,
+      .instruction-grid {
         grid-template-columns: 1fr;
+      }
+
+      .calendar-detail {
+        position: static;
       }
     }
 
@@ -431,14 +703,26 @@
       }
 
       h1 { max-width: none; }
-      .panel { padding: 18px; border-radius: 24px; }
+      .panel,
+      .instructions,
+      .calendar-detail,
+      .month-card { border-radius: 24px; }
+      .panel { padding: 18px; }
+      .instructions summary,
+      .instructions-body { padding-left: 18px; padding-right: 18px; }
       .panel-head,
       .article-meta,
-      .bridge-meta {
+      .bridge-meta,
+      .schedule-meta,
+      .month-head {
         align-items: flex-start;
       }
 
       .updated { text-align: left; }
+      .calendar-day { min-height: 84px; padding: 8px; }
+      .day-number { font-size: 1rem; }
+      .day-markers { gap: 4px; }
+      .day-marker { min-width: 18px; height: 18px; padding: 0 6px; }
     }
   </style>
 </head>
@@ -455,6 +739,40 @@
         <div class="updated" id="updatedLabel">Loading latest update…</div>
       </div>
     </section>
+
+    <details class="instructions">
+      <summary>
+        <div class="instructions-title">
+          <div class="instructions-kicker">quick memory</div>
+          <div class="instructions-headline">Instructions for kat</div>
+        </div>
+        <div class="instructions-arrow">⌄</div>
+      </summary>
+      <div class="instructions-body">
+        <div class="instruction-grid">
+          <article class="instruction-card">
+            <div class="instruction-label">Long articles</div>
+            <div class="instruction-copy">Draft them in <strong>articles/drafts/</strong>, publish to <strong>Substack</strong> as canonical, then <strong>LinkedIn Pulse</strong> full text, then <strong>X Article</strong> full text. Cross-post all 3. Hero image required. Keep the cadence around every 10 days.</div>
+          </article>
+          <article class="instruction-card">
+            <div class="instruction-label">Bridge posts</div>
+            <div class="instruction-copy">Draft 1 or 2 short posts every <strong>Monday</strong> and <strong>Thursday</strong>. X version stays within <strong>280 chars</strong>. LinkedIn feed can run slightly longer. Keep it lowercase, open with a hot take, add a personal anecdote, and skip emoji.</div>
+          </article>
+          <article class="instruction-card">
+            <div class="instruction-label">Voice</div>
+            <div class="instruction-copy">Write in Amy's voice. Punchy. Specific. Numbers and failure modes beat abstractions. No startup postmortem stuff.</div>
+          </article>
+          <article class="instruction-card">
+            <div class="instruction-label">Publish flow</div>
+            <div class="instruction-copy">Draft → send to Amy for approval → post to X and LinkedIn feed → mark the row <strong>posted</strong> in <strong>SOCIAL.md</strong> → commit.</div>
+          </article>
+          <article class="instruction-card">
+            <div class="instruction-label">Hero images</div>
+            <div class="instruction-copy">Put hero images in <strong>articles/drafts/</strong> while the post is in progress, then move them into <strong>articles/published/</strong> once the piece is live.</div>
+          </article>
+        </div>
+      </div>
+    </details>
 
     <div id="errorBox" class="error" role="alert"></div>
 
@@ -484,12 +802,32 @@
         <p class="footer-note">Status colors stay intentionally simple so you can tell at a glance what is already live, what is ready, and what still wants a draft.</p>
       </article>
     </section>
+
+    <section class="panel calendar-panel">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">Publishing calendar</h2>
+          <p class="panel-kicker">Current month and next month, with article and bridge beats pinned to the actual days.</p>
+        </div>
+        <div class="pill" id="calendarRangePill">2 months</div>
+      </div>
+      <div class="calendar-layout">
+        <div id="calendarMonths" class="calendar-months"></div>
+        <aside class="calendar-detail">
+          <div class="instructions-kicker">Selected day</div>
+          <div id="selectedDateLabel" class="calendar-detail-date">Loading…</div>
+          <div id="selectedDateItems" class="schedule-list"></div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <script>
     const state = {
       markdownUrl: 'https://raw.githubusercontent.com/amywork777/articles/main/SOCIAL.md',
-      commitsUrl: 'https://api.github.com/repos/amywork777/articles/commits?path=SOCIAL.md&per_page=1'
+      commitsUrl: 'https://api.github.com/repos/amywork777/articles/commits?path=SOCIAL.md&per_page=1',
+      selectedDate: null,
+      scheduleItems: []
     };
 
     const statusClassMap = {
@@ -541,7 +879,7 @@
     }
 
     function escapeHtml(value = '') {
-      return value
+      return String(value)
         .replaceAll('&', '&amp;')
         .replaceAll('<', '&lt;')
         .replaceAll('>', '&gt;')
@@ -549,12 +887,26 @@
         .replaceAll("'", '&#39;');
     }
 
+    function parseDateKey(value = '') {
+      const match = String(value).match(/\d{4}-\d{2}-\d{2}/);
+      return match ? match[0] : null;
+    }
+
+    function dateFromKey(dateKey) {
+      return dateKey ? new Date(`${dateKey}T12:00:00`) : null;
+    }
+
     function formatDateValue(value) {
-      if (!value) return 'No date yet';
-      const clean = value.replace(/^~/, '').trim();
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(clean)) return value;
-      const date = new Date(`${clean}T12:00:00`);
+      const dateKey = parseDateKey(value);
+      if (!dateKey) return value || 'No date yet';
+      const date = dateFromKey(dateKey);
       return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric' }).format(date);
+    }
+
+    function formatSelectedDate(dateKey) {
+      const date = dateFromKey(dateKey);
+      if (!date) return 'No date selected';
+      return new Intl.DateTimeFormat(undefined, { weekday: 'long', month: 'long', day: 'numeric' }).format(date);
     }
 
     function formatUpdatedLabel(meta) {
@@ -653,6 +1005,154 @@
       `).join('');
     }
 
+    function buildScheduleItems(articles, bridgePosts) {
+      const articleItems = articles
+        .map((article) => ({
+          dateKey: parseDateKey(article['publish date']),
+          kind: 'article',
+          label: `article ${article['#'] || ''}`,
+          title: article.title || 'Untitled article',
+          status: article.status || 'unknown'
+        }))
+        .filter((item) => item.dateKey);
+
+      const bridgeItems = bridgePosts
+        .map((post) => ({
+          dateKey: parseDateKey(post.date),
+          kind: 'bridge',
+          label: 'bridge',
+          title: post['topic angle'] || 'Untitled bridge post',
+          status: post.status || 'unknown'
+        }))
+        .filter((item) => item.dateKey);
+
+      return [...articleItems, ...bridgeItems].sort((a, b) => a.dateKey.localeCompare(b.dateKey));
+    }
+
+    function itemsForDate(dateKey) {
+      return state.scheduleItems.filter((item) => item.dateKey === dateKey);
+    }
+
+    function monthMatrix(monthDate) {
+      const year = monthDate.getFullYear();
+      const month = monthDate.getMonth();
+      const first = new Date(year, month, 1);
+      const start = new Date(first);
+      start.setDate(first.getDate() - first.getDay());
+      return Array.from({ length: 42 }, (_, index) => {
+        const date = new Date(start);
+        date.setDate(start.getDate() + index);
+        const dateKey = date.toISOString().slice(0, 10);
+        return {
+          date,
+          dateKey,
+          isCurrentMonth: date.getMonth() === month,
+          isToday: dateKey === new Date().toISOString().slice(0, 10),
+          items: itemsForDate(dateKey)
+        };
+      });
+    }
+
+    function markerHtml(item) {
+      const kindClass = item.kind === 'article' ? 'is-article' : 'is-bridge';
+      const shortLabel = item.kind === 'article' ? `A${String(item.label).replace('article ', '')}` : 'B';
+      return `<span class="day-marker ${kindClass}">${escapeHtml(shortLabel)}</span>`;
+    }
+
+    function renderMonth(monthDate) {
+      const matrix = monthMatrix(monthDate);
+      const monthLabel = new Intl.DateTimeFormat(undefined, { month: 'long', year: 'numeric' }).format(monthDate);
+      const monthShort = new Intl.DateTimeFormat(undefined, { month: 'short' }).format(monthDate);
+      const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+      return `
+        <section class="month-card">
+          <div class="month-head">
+            <div>
+              <div class="month-eyebrow">${escapeHtml(monthShort)} view</div>
+              <h3 class="month-title">${escapeHtml(monthLabel)}</h3>
+            </div>
+            <div class="pill">${matrix.reduce((count, day) => count + day.items.length, 0)} posts</div>
+          </div>
+          <div class="calendar-weekdays">
+            ${weekdays.map((day) => `<div class="calendar-weekday">${day}</div>`).join('')}
+          </div>
+          <div class="calendar-days">
+            ${matrix.map((day) => {
+              const markers = day.items.slice(0, 3).map(markerHtml).join('');
+              const overflow = day.items.length > 3 ? `<span class="day-marker is-overflow">+${day.items.length - 3}</span>` : '';
+              const classes = [
+                'calendar-day',
+                day.isCurrentMonth ? '' : 'is-other-month',
+                day.isToday ? 'is-today' : '',
+                day.items.length ? 'has-items' : '',
+                state.selectedDate === day.dateKey ? 'is-selected' : ''
+              ].filter(Boolean).join(' ');
+              return `
+                <button class="${classes}" type="button" data-date="${day.dateKey}">
+                  <div class="day-number">${day.date.getDate()}</div>
+                  <div class="day-markers">${markers}${overflow}</div>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderSelectedDay() {
+      const label = document.getElementById('selectedDateLabel');
+      const container = document.getElementById('selectedDateItems');
+      const dateKey = state.selectedDate;
+      const items = itemsForDate(dateKey);
+      label.textContent = formatSelectedDate(dateKey);
+
+      if (!items.length) {
+        container.innerHTML = `<div class="empty"><div class="detail-note">Nothing is scheduled for this day yet. Nice empty square, very clean.</div></div>`;
+        return;
+      }
+
+      container.innerHTML = items.map((item) => `
+        <article class="schedule-card">
+          <div class="schedule-top">
+            <div class="schedule-chip">${escapeHtml(item.kind === 'article' ? item.label : 'bridge post')}</div>
+            ${badge(item.status)}
+          </div>
+          <h3 class="schedule-title">${escapeHtml(item.title)}</h3>
+          <div class="schedule-meta">
+            <span>${escapeHtml(item.kind)}</span>
+            <span>${escapeHtml(formatDateValue(item.dateKey))}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderCalendar(articles, bridgePosts) {
+      state.scheduleItems = buildScheduleItems(articles, bridgePosts);
+      const now = new Date();
+      const firstMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+      const secondMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+      const visibleMonthKeys = new Set([
+        `${firstMonth.getFullYear()}-${String(firstMonth.getMonth() + 1).padStart(2, '0')}`,
+        `${secondMonth.getFullYear()}-${String(secondMonth.getMonth() + 1).padStart(2, '0')}`
+      ]);
+
+      const nextVisibleItem = state.scheduleItems.find((item) => visibleMonthKeys.has(item.dateKey.slice(0, 7)));
+      if (!state.selectedDate || !visibleMonthKeys.has(state.selectedDate.slice(0, 7))) {
+        state.selectedDate = nextVisibleItem?.dateKey || now.toISOString().slice(0, 10);
+      }
+
+      document.getElementById('calendarMonths').innerHTML = [firstMonth, secondMonth].map(renderMonth).join('');
+      document.getElementById('calendarRangePill').textContent = `${new Intl.DateTimeFormat(undefined, { month: 'short' }).format(firstMonth)} + ${new Intl.DateTimeFormat(undefined, { month: 'short' }).format(secondMonth)}`;
+      document.querySelectorAll('[data-date]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.selectedDate = button.dataset.date;
+          renderCalendar(articles, bridgePosts);
+        });
+      });
+      renderSelectedDay();
+    }
+
     function setError(message = '') {
       const box = document.getElementById('errorBox');
       box.textContent = message;
@@ -691,6 +1191,7 @@
         renderStats(articles, bridgePosts);
         renderArticles(articles);
         renderBridgePosts(bridgePosts);
+        renderCalendar(articles, bridgePosts);
         document.getElementById('updatedLabel').textContent = formatUpdatedLabel(meta);
       } catch (error) {
         console.error(error);

@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amy's content calendar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fffaf3;
+      --panel: rgba(255, 255, 255, 0.78);
+      --panel-strong: rgba(255, 255, 255, 0.92);
+      --text: #2d2a26;
+      --muted: #746c63;
+      --line: rgba(77, 58, 38, 0.12);
+      --shadow: 0 20px 60px rgba(116, 83, 45, 0.12);
+      --peach: #ffd7bf;
+      --butter: #fff0b8;
+      --sage: #dcecc9;
+      --sky: #dcecff;
+      --lavender: #e8dfff;
+      --rose: #ffe8ef;
+      --live-bg: #dff6d8;
+      --live-text: #24553a;
+      --drafted-bg: #dde9ff;
+      --drafted-text: #264b88;
+      --queued-bg: #ece8e2;
+      --queued-text: #5f5a53;
+      --pending-bg: #fff2bf;
+      --pending-text: #7a5a12;
+      --posted-bg: #d9f1de;
+      --posted-text: #225640;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 214, 191, 0.8), transparent 28%),
+        radial-gradient(circle at top right, rgba(232, 223, 255, 0.8), transparent 24%),
+        radial-gradient(circle at 20% 80%, rgba(220, 236, 201, 0.7), transparent 24%),
+        linear-gradient(180deg, #fffaf3 0%, #fff7ef 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      background-image: radial-gradient(rgba(130, 98, 67, 0.11) 0.6px, transparent 0.6px);
+      background-size: 16px 16px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.65), transparent 85%);
+    }
+
+    .shell {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      backdrop-filter: blur(14px);
+      width: fit-content;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .refresh {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2f2a27 0%, #51463d 100%);
+      color: white;
+      font: inherit;
+      font-weight: 600;
+      box-shadow: 0 16px 40px rgba(44, 34, 22, 0.18);
+      transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+    }
+
+    .refresh:hover { transform: translateY(-1px); box-shadow: 0 20px 44px rgba(44, 34, 22, 0.22); }
+    .refresh:disabled { opacity: 0.7; cursor: wait; }
+    .refresh.loading { position: relative; padding-right: 48px; }
+    .refresh.loading::after {
+      content: '';
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      margin-top: -8px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 700ms linear infinite;
+    }
+
+    .updated {
+      color: var(--muted);
+      font-size: 0.93rem;
+      text-align: right;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin: 30px 0 26px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat::before {
+      content: '';
+      position: absolute;
+      inset: auto -22px -38px auto;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    }
+
+    .stat:nth-child(1) { background: linear-gradient(180deg, rgba(255, 232, 239, 0.88), rgba(255,255,255,0.88)); }
+    .stat:nth-child(2) { background: linear-gradient(180deg, rgba(220, 236, 201, 0.88), rgba(255,255,255,0.9)); }
+    .stat:nth-child(3) { background: linear-gradient(180deg, rgba(220, 236, 255, 0.88), rgba(255,255,255,0.9)); }
+    .stat:nth-child(4) { background: linear-gradient(180deg, rgba(255, 240, 184, 0.88), rgba(255,255,255,0.92)); }
+
+    .stat-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(45, 42, 38, 0.68);
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin: 0 0 6px;
+    }
+
+    .stat-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--panel-strong);
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      letter-spacing: -0.03em;
+    }
+
+    .panel-kicker {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-width: 38ch;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(77, 58, 38, 0.05);
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .article-card,
+    .bridge-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      border-radius: 22px;
+      padding: 18px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .article-card:hover,
+    .bridge-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(77, 58, 38, 0.16);
+      box-shadow: 0 12px 26px rgba(82, 61, 42, 0.09);
+    }
+
+    .article-top,
+    .bridge-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .index-chip,
+    .date-chip {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .article-title,
+    .bridge-title {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+    }
+
+    .article-meta,
+    .bridge-meta {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(77, 58, 38, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      flex-wrap: wrap;
+    }
+
+    .bridge-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bridge-card {
+      padding: 16px 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,250,243,0.86));
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.88;
+    }
+
+    .badge-live { background: var(--live-bg); color: var(--live-text); border-color: rgba(36, 85, 58, 0.12); }
+    .badge-drafted { background: var(--drafted-bg); color: var(--drafted-text); border-color: rgba(38, 75, 136, 0.12); }
+    .badge-queued { background: var(--queued-bg); color: var(--queued-text); border-color: rgba(95, 90, 83, 0.12); }
+    .badge-pending { background: var(--pending-bg); color: var(--pending-text); border-color: rgba(122, 90, 18, 0.12); }
+    .badge-posted { background: var(--posted-bg); color: var(--posted-text); border-color: rgba(34, 86, 64, 0.12); }
+    .badge-default { background: var(--lavender); color: #5b4b74; border-color: rgba(91, 75, 116, 0.12); }
+
+    .empty,
+    .error {
+      border-radius: 22px;
+      padding: 16px 18px;
+      font-size: 0.97rem;
+      line-height: 1.6;
+    }
+
+    .empty {
+      background: rgba(77, 58, 38, 0.04);
+      color: var(--muted);
+      border: 1px dashed rgba(77, 58, 38, 0.16);
+    }
+
+    .error {
+      display: none;
+      margin-bottom: 18px;
+      background: #fff0ef;
+      color: #8f3a30;
+      border: 1px solid rgba(143, 58, 48, 0.16);
+    }
+
+    .error.show { display: block; }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 980px) {
+      .stats,
+      .board,
+      .article-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .board {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell { padding: 24px 14px 64px; }
+      .hero,
+      .stats,
+      .article-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        justify-content: flex-start;
+      }
+
+      h1 { max-width: none; }
+      .panel { padding: 18px; border-radius: 24px; }
+      .panel-head,
+      .article-meta,
+      .bridge-meta {
+        align-items: flex-start;
+      }
+
+      .updated { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">softgoods brain, posting rhythm, less chaos</div>
+        <h1>Amy's content calendar</h1>
+        <p class="subtitle">A soft little dashboard for the articles queue and the bridge post rhythm. It pulls the latest markdown, turns it into something readable, and keeps the next beats obvious.</p>
+      </div>
+      <div class="toolbar">
+        <button id="refreshButton" class="refresh" type="button">Refresh</button>
+        <div class="updated" id="updatedLabel">Loading latest update…</div>
+      </div>
+    </section>
+
+    <div id="errorBox" class="error" role="alert"></div>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="board">
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Articles queue</h2>
+            <p class="panel-kicker">Long-form pieces, meant to go Substack first and then echo outward.</p>
+          </div>
+          <div class="pill" id="articlesCountPill">0 items</div>
+        </div>
+        <div id="articles" class="article-grid"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title">Bridge posts queue</h2>
+            <p class="panel-kicker">Shorter posts that keep the conversation warm between article drops.</p>
+          </div>
+          <div class="pill" id="bridgeCountPill">0 items</div>
+        </div>
+        <div id="bridgePosts" class="bridge-list"></div>
+        <p class="footer-note">Status colors stay intentionally simple so you can tell at a glance what is already live, what is ready, and what still wants a draft.</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      markdownUrl: 'https://raw.githubusercontent.com/amywork777/articles/main/SOCIAL.md',
+      commitsUrl: 'https://api.github.com/repos/amywork777/articles/commits?path=SOCIAL.md&per_page=1'
+    };
+
+    const statusClassMap = {
+      live: 'badge-live',
+      drafted: 'badge-drafted',
+      queued: 'badge-queued',
+      pending: 'badge-pending',
+      posted: 'badge-posted'
+    };
+
+    function cellValues(line) {
+      return line
+        .split('|')
+        .slice(1, -1)
+        .map((cell) => cell.trim());
+    }
+
+    function extractSection(markdown, heading) {
+      const pattern = new RegExp(`##\\s+${heading}([\\s\\S]*?)(?=\\n##\\s+|$)`, 'i');
+      const match = markdown.match(pattern);
+      return match ? match[1].trim() : '';
+    }
+
+    function parseTable(sectionText) {
+      const lines = sectionText
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter((line) => line.startsWith('|'));
+
+      if (lines.length < 3) return [];
+
+      const headers = cellValues(lines[0]).map((header) => header.toLowerCase());
+      return lines.slice(2).map((line) => {
+        const values = cellValues(line);
+        return headers.reduce((row, header, index) => {
+          row[header] = values[index] || '';
+          return row;
+        }, {});
+      });
+    }
+
+    function parseCalendar(markdown) {
+      const articlesSection = extractSection(markdown, 'Articles queue');
+      const bridgeSection = extractSection(markdown, 'Bridge posts queue');
+      return {
+        articles: parseTable(articlesSection),
+        bridgePosts: parseTable(bridgeSection)
+      };
+    }
+
+    function escapeHtml(value = '') {
+      return value
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function formatDateValue(value) {
+      if (!value) return 'No date yet';
+      const clean = value.replace(/^~/, '').trim();
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(clean)) return value;
+      const date = new Date(`${clean}T12:00:00`);
+      return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric' }).format(date);
+    }
+
+    function formatUpdatedLabel(meta) {
+      if (!meta || !meta.commitTime) return 'Last updated unavailable';
+      const date = new Date(meta.commitTime);
+      const absolute = new Intl.DateTimeFormat(undefined, {
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+      }).format(date);
+      return `Last updated ${absolute}`;
+    }
+
+    function badge(status) {
+      const key = String(status || '').toLowerCase();
+      const className = statusClassMap[key] || 'badge-default';
+      return `<span class="badge ${className}">${escapeHtml(key || 'unknown')}</span>`;
+    }
+
+    function renderStats(articles, bridgePosts) {
+      const liveCount = articles.filter((item) => item.status?.toLowerCase() === 'live').length;
+      const draftedCount = articles.filter((item) => item.status?.toLowerCase() === 'drafted').length;
+      const nextArticle = articles.find((item) => item.status?.toLowerCase() !== 'live');
+      const nextBridge = bridgePosts.find((item) => item.status?.toLowerCase() === 'pending') || bridgePosts[0];
+
+      document.getElementById('stats').innerHTML = `
+        <article class="stat">
+          <div class="stat-label">Long-form queued</div>
+          <h3 class="stat-value">${articles.length}</h3>
+          <div class="stat-note">${liveCount} already live, ${draftedCount} in drafted shape.</div>
+        </article>
+        <article class="stat">
+          <div class="stat-label">Bridge rhythm</div>
+          <h3 class="stat-value">${bridgePosts.length}</h3>
+          <div class="stat-note">Shorter posts meant to keep Mondays and Thursdays from going empty.</div>
+        </article>
+        <article class="stat">
+          <div class="stat-label">Next article</div>
+          <h3 class="stat-value">${escapeHtml(nextArticle ? `#${nextArticle['#']}` : '—')}</h3>
+          <div class="stat-note">${escapeHtml(nextArticle ? nextArticle.title : 'Nothing queued yet')}.</div>
+        </article>
+        <article class="stat">
+          <div class="stat-label">Next bridge post</div>
+          <h3 class="stat-value">${escapeHtml(nextBridge ? formatDateValue(nextBridge.date) : '—')}</h3>
+          <div class="stat-note">${escapeHtml(nextBridge ? nextBridge['topic angle'] : 'Nothing pending yet')}.</div>
+        </article>
+      `;
+    }
+
+    function renderArticles(articles) {
+      const container = document.getElementById('articles');
+      document.getElementById('articlesCountPill').textContent = `${articles.length} items`;
+
+      if (!articles.length) {
+        container.innerHTML = '<div class="empty">No articles in the queue yet.</div>';
+        return;
+      }
+
+      container.innerHTML = articles.map((article) => `
+        <article class="article-card">
+          <div class="article-top">
+            <div class="index-chip">Article ${escapeHtml(article['#'] || '')}</div>
+            ${badge(article.status)}
+          </div>
+          <h3 class="article-title">${escapeHtml(article.title || 'Untitled')}</h3>
+          <div class="article-meta">
+            <span>${escapeHtml(formatDateValue(article['publish date']))}</span>
+            <span>${escapeHtml(String(article.status || '').toLowerCase())}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderBridgePosts(bridgePosts) {
+      const container = document.getElementById('bridgePosts');
+      document.getElementById('bridgeCountPill').textContent = `${bridgePosts.length} items`;
+
+      if (!bridgePosts.length) {
+        container.innerHTML = '<div class="empty">No bridge posts mapped out yet.</div>';
+        return;
+      }
+
+      container.innerHTML = bridgePosts.map((post) => `
+        <article class="bridge-card">
+          <div class="bridge-top">
+            <div class="date-chip">${escapeHtml(formatDateValue(post.date))}</div>
+            ${badge(post.status)}
+          </div>
+          <h3 class="bridge-title">${escapeHtml(post['topic angle'] || 'Untitled')}</h3>
+          <div class="bridge-meta">
+            <span>${escapeHtml(String(post.status || '').toLowerCase())}</span>
+            <span>${escapeHtml(post.date || '')}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function setError(message = '') {
+      const box = document.getElementById('errorBox');
+      box.textContent = message;
+      box.classList.toggle('show', Boolean(message));
+    }
+
+    async function loadCalendar() {
+      const refreshButton = document.getElementById('refreshButton');
+      refreshButton.disabled = true;
+      refreshButton.classList.add('loading');
+      setError('');
+
+      try {
+        const bust = `ts=${Date.now()}`;
+        const [markdownResponse, commitsResponse] = await Promise.all([
+          fetch(`${state.markdownUrl}?${bust}`, { cache: 'no-store' }),
+          fetch(`${state.commitsUrl}&${bust}`, {
+            cache: 'no-store',
+            headers: { 'Accept': 'application/vnd.github+json' }
+          })
+        ]);
+
+        if (!markdownResponse.ok) throw new Error('Could not fetch SOCIAL.md');
+        if (!commitsResponse.ok) throw new Error('Could not fetch commit metadata');
+
+        const [markdown, commits] = await Promise.all([
+          markdownResponse.text(),
+          commitsResponse.json()
+        ]);
+
+        const meta = {
+          commitTime: commits?.[0]?.commit?.committer?.date || null
+        };
+
+        const { articles, bridgePosts } = parseCalendar(markdown);
+        renderStats(articles, bridgePosts);
+        renderArticles(articles);
+        renderBridgePosts(bridgePosts);
+        document.getElementById('updatedLabel').textContent = formatUpdatedLabel(meta);
+      } catch (error) {
+        console.error(error);
+        setError('Could not load the latest content calendar yet. Give it a second and hit refresh.');
+        document.getElementById('updatedLabel').textContent = 'Last updated unavailable';
+      } finally {
+        refreshButton.disabled = false;
+        refreshButton.classList.remove('loading');
+      }
+    }
+
+    document.getElementById('refreshButton').addEventListener('click', loadCalendar);
+    loadCalendar();
+  </script>
+</body>
+</html>

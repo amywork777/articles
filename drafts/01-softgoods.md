@@ -58,9 +58,9 @@ If you're an engineer looking for a discipline that's technically deep, commerci
 
 ## Further reading
 
-- *Engineering with Textiles* by Hu - the closest thing to a proper textbook
-- Ashby + Jones, *Engineering Materials Vol. 2* - viscoelasticity and polymer behavior
-- CLO3D documentation on garment drape simulation
-- Gore-Tex patents on ePTFE membrane construction
-- Arc'teryx engineering blog - rare public look at performance softgoods
+- [*Handbook of Fibrous Materials*](https://onlinelibrary.wiley.com/doi/book/10.1002/9783527342587) edited by Jinlian Hu - the closest thing to a proper textile engineering reference
+- [Ashby and Jones, *Engineering Materials 2*](https://shop.elsevier.com/books/engineering-materials-2/jones/978-0-08-096668-7) - viscoelasticity and polymer behavior
+- [CLO3D documentation](https://support.clo3d.com/hc/en-us) on garment drape simulation
+- Gore-Tex patents on ePTFE membrane construction (search Google Patents for "expanded PTFE membrane")
+- [Arc'teryx Lithographica](https://blog.arcteryx.com/) - rare public look at performance softgoods design
 - DuPont Tyvek and Sontara technical bulletins

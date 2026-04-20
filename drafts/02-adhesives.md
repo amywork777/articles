@@ -50,7 +50,7 @@ A discipline that quietly underwrites a huge fraction of the products you use ev
 
 ## Further reading
 
-- *Adhesion and Adhesives Technology* by Pocius - the standard textbook
-- 3M technical bulletins on adhesives (free, surprisingly good)
-- Henkel Loctite design guides
-- Kinloch's *Adhesion and Adhesives* for the surface science fundamentals
+- [*Adhesion and Adhesives Technology*](https://shop.elsevier.com/books/adhesion-and-adhesives-technology/pocius/978-1-56990-855-6) by Pocius - the standard textbook
+- [3M Scotch-Weld Structural Adhesives selection guide](https://multimedia.3m.com/mws/media/328280O/product-selection-guide.pdf) (free, surprisingly good)
+- [Henkel Loctite Adhesives Sourcebook](https://next.henkel-adhesives.com/us/en/brochures/loctite-adhesives-sourcebook.html)
+- [Kinloch, *Adhesion and Adhesives: Science and Technology*](https://link.springer.com/book/10.1007/978-94-015-7764-9) for the surface science fundamentals

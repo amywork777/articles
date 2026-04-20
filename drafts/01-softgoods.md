@@ -53,14 +53,3 @@ AI tooling for hard goods is exploding. Generative CAD, simulation, the whole st
 Softgoods has barely been touched. The textile industry runs on PDFs, hand-drawn tech packs, and decades-old simulation tools that nobody outside apparel has heard of. There is enormous room for someone to build the equivalent of modern CAD for soft materials, and almost nobody is trying. Variant 3D is one of the few teams I've seen actually working on this; there should be ten more.
 
 If you're an engineer looking for a discipline that's technically deep, commercially significant, and basically empty of competition, look at softgoods.
-
----
-
-## Further reading
-
-- [*Handbook of Fibrous Materials*](https://onlinelibrary.wiley.com/doi/book/10.1002/9783527342587) edited by Jinlian Hu - the closest thing to a proper textile engineering reference
-- [Ashby and Jones, *Engineering Materials 2*](https://shop.elsevier.com/books/engineering-materials-2/jones/978-0-08-096668-7) - viscoelasticity and polymer behavior
-- [CLO3D documentation](https://support.clo3d.com/hc/en-us) on garment drape simulation
-- Gore-Tex patents on ePTFE membrane construction (search Google Patents for "expanded PTFE membrane")
-- [Arc'teryx Lithographica](https://blog.arcteryx.com/) - rare public look at performance softgoods design
-- DuPont Tyvek and Sontara technical bulletins

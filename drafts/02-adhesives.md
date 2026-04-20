@@ -45,12 +45,3 @@ Adhesives are eating fasteners everywhere. Apple uses adhesive instead of screws
 But the design tooling has not kept up. The state of the art is still a PDF data sheet and a phone call to the vendor's tech rep. There is no good simulation. There is no integration in mainstream CAD that lets you specify, simulate, and verify a bonded joint the way you can a bolted one.
 
 A discipline that quietly underwrites a huge fraction of the products you use every day, run by a small community of specialists, with almost no good software. If you're an engineer looking for somewhere with depth and very little public knowledge, this is one of the best places to look.
-
----
-
-## Further reading
-
-- [*Adhesion and Adhesives Technology*](https://shop.elsevier.com/books/adhesion-and-adhesives-technology/pocius/978-1-56990-855-6) by Pocius - the standard textbook
-- [3M Scotch-Weld Structural Adhesives selection guide](https://multimedia.3m.com/mws/media/328280O/product-selection-guide.pdf) (free, surprisingly good)
-- [Henkel Loctite Adhesives Sourcebook](https://next.henkel-adhesives.com/us/en/brochures/loctite-adhesives-sourcebook.html)
-- [Kinloch, *Adhesion and Adhesives: Science and Technology*](https://link.springer.com/book/10.1007/978-94-015-7764-9) for the surface science fundamentals

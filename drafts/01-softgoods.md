@@ -44,11 +44,11 @@ What I love about softgoods is that it sits at the intersection of two disciplin
 
 The fashion side gives you intuition about hand-feel, drape, color, how a material reads to a human. The engineering side gives you the language to predict failure, specify tolerances, and run a real supply chain. Both are essential. Most teams have one or the other.
 
-The companies that make great soft products - Patagonia, Arc'teryx, Nike, Apple's softgoods team, the high-end automotive interior shops - have figured out how to put both kinds of brain in the same room. That's harder than it sounds.
+The teams that make great soft products have figured out how to put both kinds of brain in the same room. That's harder than it sounds.
 
 ## Why this matters now
 
-AI tooling for hard goods is exploding. Vizcom (where I work), nTop, the new wave of generative CAD - all of it is making rigid mechanical design faster.
+AI tooling for hard goods is exploding. Generative CAD, simulation, the whole stack is getting faster and smarter every quarter.
 
 Softgoods has barely been touched. The textile industry runs on PDFs, hand-drawn tech packs, and decades-old simulation tools that nobody outside apparel has heard of. There is enormous room for someone to build the equivalent of modern CAD for soft materials, and almost nobody is trying.
 

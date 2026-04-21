@@ -18,22 +18,27 @@ Voice: lowercase, punchy, hot-take opener, personal anecdote, manufacturing/soft
 | 7 | Foam selection 101 | queued | ~2026-06-19 |
 | 8 | Gaskets and the geometry of sealing | queued | ~2026-06-29 |
 
-## Bridge posts queue
-Drafted 3x/week (mon + wed + fri). Format: 1 hot take + 1 specific anecdote, ~2-4 short paragraphs. ~280 chars for X, slightly longer for LinkedIn. Always teases or extends from the most recent article.
+## Post categories
+- **MFG_HOT_TAKE** — manufacturing pain/observation with attitude. Core voice. Best historical performance.
+- **AI_CAD** — AI x manufacturing/CAD thinking. Lands well with tech crowd.
+- **PERSONAL** — SF observations, life jokes, "overheard" moments. Underused but high engagement.
+- **PHOTO** — image-led post, can be lifestyle or factory floor. "iykyk" energy.
+- **ARTICLE_TIE_IN** — extends or teases a long article in queue.
 
-| Date | Topic angle | Status |
-|---|---|---|
-| 2026-04-22 wed | softgoods follow-up: stretch isn't a property, it's a behavior | pending |
-| 2026-04-24 fri | knit vs woven: when to use each | pending |
-| 2026-04-27 mon | seam allowance: where designs break in production | pending |
-| 2026-04-29 wed | dye lot variance, why your prototype doesn't match | pending |
-| 2026-05-01 fri | pre-launch tease for adhesives article | pending |
-| 2026-05-04 mon | adhesives follow-up: thermosets vs thermoplastics | pending |
-| 2026-05-06 wed | bondline thickness: the hidden spec | pending |
-| 2026-05-08 fri | surface prep matters more than the glue | pending |
-| 2026-05-11 mon | tolerance stack tease | pending |
-| 2026-05-13 wed | the 0.1mm that ruined my first injection mold | pending |
-| 2026-05-15 fri | RSS vs MMC, the GD&T decision nobody explains | pending |
+## Bridge posts queue
+Drafted 3x/week (mon + wed + fri). Format: ~280 chars for X, slightly longer for LinkedIn. Lived-pain framing, one-breath readable, blunt opinion. Once mon/wed/fri are consistently full, expand to tue + thu.
+
+| Date | Slot | Category | Topic angle | Status |
+|---|---|---|---|---|
+| 2026-04-22 wed | 1 | ARTICLE_TIE_IN | softgoods follow-up: stretch isn't a property, it's a behavior | pending |
+| 2026-04-24 fri | 2 | MFG_HOT_TAKE | seam allowance: where beautiful designs die in production | pending |
+| 2026-04-27 mon | 3 | PERSONAL | overheard in SF / industry observation | pending |
+| 2026-04-29 wed | 4 | MFG_HOT_TAKE | dye lot variance, why your prototype doesn't match production | pending |
+| 2026-05-01 fri | 5 | ARTICLE_TIE_IN | pre-launch tease for adhesives article | pending |
+| 2026-05-04 mon | 6 | AI_CAD | AI can't generate parts because it doesn't know what's manufacturable | pending |
+| 2026-05-06 wed | 7 | MFG_HOT_TAKE | bondline thickness: the hidden spec nobody dimensions | pending |
+| 2026-05-08 fri | 8 | PHOTO | factory floor / vizcom render shot with one-line caption | pending |
+| 2026-05-11 mon | 9 | MFG_HOT_TAKE | the 0.1mm that ruined my first injection mold | pending |
 
 ## Themes & angles to mine
 - specific failure modes (snag, weave creep, seam slippage, dye migration)

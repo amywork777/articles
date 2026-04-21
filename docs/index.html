@@ -22,6 +22,16 @@
       --sky: #dcecff;
       --lavender: #e8dfff;
       --rose: #ffe8ef;
+      --cat-mfg-bg: #f8dacb;
+      --cat-mfg-text: #8e5034;
+      --cat-ai-bg: #ede1ff;
+      --cat-ai-text: #65508d;
+      --cat-personal-bg: #ffe3ef;
+      --cat-personal-text: #9b5674;
+      --cat-photo-bg: #fff1c6;
+      --cat-photo-text: #8a6821;
+      --cat-tie-bg: #dff0d1;
+      --cat-tie-text: #4f7443;
       --live-bg: #dff6d8;
       --live-text: #24553a;
       --drafted-bg: #dde9ff;
@@ -480,6 +490,189 @@
     .badge-posted { background: var(--posted-bg); color: var(--posted-text); border-color: rgba(34, 86, 64, 0.12); }
     .badge-default { background: var(--lavender); color: #5b4b74; border-color: rgba(91, 75, 116, 0.12); }
 
+
+    .cat-mfg-hot-take { --cat-bg: var(--cat-mfg-bg); --cat-text: var(--cat-mfg-text); --cat-border: rgba(142, 80, 52, 0.16); }
+    .cat-ai-cad { --cat-bg: var(--cat-ai-bg); --cat-text: var(--cat-ai-text); --cat-border: rgba(101, 80, 141, 0.16); }
+    .cat-personal { --cat-bg: var(--cat-personal-bg); --cat-text: var(--cat-personal-text); --cat-border: rgba(155, 86, 116, 0.16); }
+    .cat-photo { --cat-bg: var(--cat-photo-bg); --cat-text: var(--cat-photo-text); --cat-border: rgba(138, 104, 33, 0.16); }
+    .cat-article-tie-in { --cat-bg: var(--cat-tie-bg); --cat-text: var(--cat-tie-text); --cat-border: rgba(79, 116, 67, 0.16); }
+    .cat-uncategorized { --cat-bg: rgba(77, 58, 38, 0.08); --cat-text: var(--muted); --cat-border: rgba(77, 58, 38, 0.14); }
+
+    .badge-category {
+      background: var(--cat-bg, rgba(77, 58, 38, 0.05));
+      color: var(--cat-text, var(--muted));
+      border-color: var(--cat-border, rgba(77, 58, 38, 0.12));
+    }
+
+    .bridge-tools {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .bridge-filter-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(45, 42, 38, 0.68);
+    }
+
+    .bridge-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-chip {
+      appearance: none;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: rgba(255,255,255,0.82);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease, opacity 160ms ease;
+    }
+
+    .filter-chip:hover {
+      transform: translateY(-1px);
+      border-color: rgba(77, 58, 38, 0.16);
+      box-shadow: 0 10px 18px rgba(82, 61, 42, 0.08);
+    }
+
+    .filter-chip.is-all.is-active {
+      background: linear-gradient(135deg, #2f2a27 0%, #51463d 100%);
+      color: white;
+      border-color: transparent;
+    }
+
+    .filter-chip.category-chip {
+      color: var(--cat-text, var(--muted));
+      border-color: var(--cat-border, rgba(77, 58, 38, 0.12));
+    }
+
+    .filter-chip.category-chip.is-active {
+      background: var(--cat-bg, rgba(255,255,255,0.82));
+      color: var(--cat-text, var(--muted));
+      border-color: var(--cat-border, rgba(77, 58, 38, 0.12));
+      box-shadow: 0 10px 20px rgba(82, 61, 42, 0.08);
+    }
+
+    .filter-chip.category-chip:not(.is-active) {
+      opacity: 0.76;
+    }
+
+    .filter-chip-count {
+      min-width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      padding: 0 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.02em;
+      background: rgba(77, 58, 38, 0.07);
+      color: inherit;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .legend-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.72);
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .legend-card.is-muted {
+      opacity: 0.6;
+    }
+
+    .legend-copy {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .bridge-groups {
+      display: grid;
+      gap: 14px;
+    }
+
+    .bridge-group {
+      border-radius: 24px;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: rgba(255,255,255,0.46);
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .bridge-group-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 2px 4px 0;
+    }
+
+    .bridge-group-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .bridge-group-title {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-size: 1.14rem;
+      letter-spacing: -0.02em;
+    }
+
+    .bridge-group-note {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      max-width: 56ch;
+    }
+
+    .bridge-group-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bridge-badges {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .bridge-extra {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
     .calendar-panel {
       display: grid;
       gap: 18px;
@@ -611,7 +804,11 @@
     }
 
     .day-marker.is-article { background: rgba(220, 236, 255, 0.95); color: #264b88; border-color: rgba(38, 75, 136, 0.12); }
-    .day-marker.is-bridge { background: rgba(255, 240, 184, 0.95); color: #7a5a12; border-color: rgba(122, 90, 18, 0.12); }
+    .day-marker.is-bridge-category {
+      background: var(--cat-bg, rgba(255, 240, 184, 0.95));
+      color: var(--cat-text, #7a5a12);
+      border-color: var(--cat-border, rgba(122, 90, 18, 0.12));
+    }
     .day-marker.is-overflow { background: rgba(77, 58, 38, 0.06); color: var(--muted); }
 
     .calendar-detail {
@@ -798,8 +995,10 @@
           </div>
           <div class="pill" id="bridgeCountPill">0 items</div>
         </div>
-        <div id="bridgePosts" class="bridge-list"></div>
-        <p class="footer-note">Status colors stay intentionally simple so you can tell at a glance what is already live, what is ready, and what still wants a draft.</p>
+        <div id="bridgeFilters" class="bridge-tools"></div>
+        <div id="bridgeLegend" class="legend"></div>
+        <div id="bridgePosts" class="bridge-groups"></div>
+        <p class="footer-note">Category colors carry all the way through the cards and calendar dots, so the next beat is readable in about half a second.</p>
       </article>
     </section>
 
@@ -827,7 +1026,12 @@
       markdownUrl: 'https://raw.githubusercontent.com/amywork777/articles/main/SOCIAL.md',
       commitsUrl: 'https://api.github.com/repos/amywork777/articles/commits?path=SOCIAL.md&per_page=1',
       selectedDate: null,
-      scheduleItems: []
+      scheduleItems: [],
+      articles: [],
+      bridgePosts: [],
+      categoryMeta: {},
+      activeCategories: new Set(),
+      filtersInitialized: false
     };
 
     const statusClassMap = {
@@ -836,6 +1040,45 @@
       queued: 'badge-queued',
       pending: 'badge-pending',
       posted: 'badge-posted'
+    };
+
+    const categoryFallbacks = {
+      MFG_HOT_TAKE: {
+        label: 'MFG_HOT_TAKE',
+        title: 'MFG hot take',
+        meaning: 'manufacturing pain or observation with attitude. core voice. best historical performance.',
+        short: 'MFG'
+      },
+      AI_CAD: {
+        label: 'AI_CAD',
+        title: 'AI x CAD',
+        meaning: 'AI x manufacturing and CAD thinking. lands well with the tech crowd.',
+        short: 'AI'
+      },
+      PERSONAL: {
+        label: 'PERSONAL',
+        title: 'Personal',
+        meaning: 'SF observations, life jokes, overheard moments. underused but high engagement.',
+        short: 'LIFE'
+      },
+      PHOTO: {
+        label: 'PHOTO',
+        title: 'Photo-led',
+        meaning: 'image-first post, lifestyle or factory floor, with iykyk energy.',
+        short: 'PIC'
+      },
+      ARTICLE_TIE_IN: {
+        label: 'ARTICLE_TIE_IN',
+        title: 'Article tie-in',
+        meaning: 'extends or teases a long article already in the queue.',
+        short: 'TIE'
+      },
+      UNCATEGORIZED: {
+        label: 'UNCATEGORIZED',
+        title: 'Uncategorized',
+        meaning: 'missing a category in the markdown, so this needs cleanup.',
+        short: 'MISC'
+      }
     };
 
     function cellValues(line) {
@@ -869,15 +1112,6 @@
       });
     }
 
-    function parseCalendar(markdown) {
-      const articlesSection = extractSection(markdown, 'Articles queue');
-      const bridgeSection = extractSection(markdown, 'Bridge posts queue');
-      return {
-        articles: parseTable(articlesSection),
-        bridgePosts: parseTable(bridgeSection)
-      };
-    }
-
     function escapeHtml(value = '') {
       return String(value)
         .replaceAll('&', '&amp;')
@@ -885,6 +1119,92 @@
         .replaceAll('>', '&gt;')
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#39;');
+    }
+
+    function normalizeCategoryKey(value = '') {
+      const key = String(value || '').trim().toUpperCase();
+      return key || 'UNCATEGORIZED';
+    }
+
+    function categoryClass(category = '') {
+      return `cat-${normalizeCategoryKey(category).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+    }
+
+    function titleCaseFromKey(value = '') {
+      return String(value || '')
+        .toLowerCase()
+        .split(/[_\s]+/)
+        .filter(Boolean)
+        .map((chunk) => chunk.charAt(0).toUpperCase() + chunk.slice(1))
+        .join(' ');
+    }
+
+    function parseCategoryDefinitions(markdown) {
+      const section = extractSection(markdown, 'Post categories');
+      const parsed = {};
+      section
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter((line) => line.startsWith('-'))
+        .forEach((line) => {
+          const match = line.match(/\*\*(.+?)\*\*\s*[—-]\s*(.+)$/);
+          if (!match) return;
+          const key = normalizeCategoryKey(match[1]);
+          parsed[key] = {
+            label: key,
+            title: categoryFallbacks[key]?.title || titleCaseFromKey(key),
+            meaning: match[2].trim(),
+            short: categoryFallbacks[key]?.short || key.split('_').map((part) => part[0]).join('').slice(0, 4)
+          };
+        });
+      return parsed;
+    }
+
+    function normalizeBridgePost(post = {}) {
+      const normalizedCategory = normalizeCategoryKey(post.category || '');
+      return {
+        ...post,
+        date: post.date || '',
+        slot: post.slot || '',
+        category: normalizedCategory,
+        'topic angle': post['topic angle'] || post.topic || post.title || '',
+        status: post.status || 'unknown'
+      };
+    }
+
+    function buildCategoryMeta(parsedDefinitions, bridgePosts) {
+      const merged = {};
+      Object.entries(categoryFallbacks).forEach(([key, definition]) => {
+        if (key === 'UNCATEGORIZED') return;
+        merged[key] = { ...definition, ...(parsedDefinitions[key] || {}) };
+      });
+
+      bridgePosts.forEach((post) => {
+        const key = normalizeCategoryKey(post.category);
+        if (!merged[key]) {
+          merged[key] = {
+            label: key,
+            title: titleCaseFromKey(key),
+            meaning: categoryFallbacks[key]?.meaning || 'custom category from SOCIAL.md.',
+            short: categoryFallbacks[key]?.short || key.split('_').map((part) => part[0]).join('').slice(0, 4)
+          };
+        }
+      });
+
+      if (bridgePosts.some((post) => normalizeCategoryKey(post.category) === 'UNCATEGORIZED')) {
+        merged.UNCATEGORIZED = { ...categoryFallbacks.UNCATEGORIZED, ...(parsedDefinitions.UNCATEGORIZED || {}) };
+      }
+
+      return merged;
+    }
+
+    function parseCalendar(markdown) {
+      const articlesSection = extractSection(markdown, 'Articles queue');
+      const bridgeSection = extractSection(markdown, 'Bridge posts queue');
+      const articles = parseTable(articlesSection);
+      const bridgePosts = parseTable(bridgeSection).map(normalizeBridgePost);
+      const categoryDefinitions = buildCategoryMeta(parseCategoryDefinitions(markdown), bridgePosts);
+      return { articles, bridgePosts, categoryDefinitions };
     }
 
     function parseDateKey(value = '') {
@@ -927,6 +1247,30 @@
       return `<span class="badge ${className}">${escapeHtml(key || 'unknown')}</span>`;
     }
 
+    function categoryBadge(category) {
+      const key = normalizeCategoryKey(category);
+      const meta = state.categoryMeta[key] || categoryFallbacks[key] || categoryFallbacks.UNCATEGORIZED;
+      return `<span class="badge badge-category ${categoryClass(key)}">${escapeHtml(meta.label || key)}</span>`;
+    }
+
+    function categoryOrder() {
+      return Object.keys(state.categoryMeta);
+    }
+
+    function filteredBridgePosts() {
+      return state.bridgePosts.filter((post) => state.activeCategories.has(normalizeCategoryKey(post.category)));
+    }
+
+    function syncActiveCategories() {
+      const keys = categoryOrder();
+      if (!state.filtersInitialized) {
+        state.activeCategories = new Set(keys);
+        state.filtersInitialized = true;
+        return;
+      }
+      state.activeCategories = new Set([...state.activeCategories].filter((key) => keys.includes(key)));
+    }
+
     function renderStats(articles, bridgePosts) {
       const liveCount = articles.filter((item) => item.status?.toLowerCase() === 'live').length;
       const draftedCount = articles.filter((item) => item.status?.toLowerCase() === 'drafted').length;
@@ -942,7 +1286,7 @@
         <article class="stat">
           <div class="stat-label">Bridge rhythm</div>
           <h3 class="stat-value">${bridgePosts.length}</h3>
-          <div class="stat-note">Shorter posts meant to keep Mondays and Thursdays from going empty.</div>
+          <div class="stat-note">Shorter posts grouped by category, so the next beat is easier to scan.</div>
         </article>
         <article class="stat">
           <div class="stat-label">Next article</div>
@@ -981,28 +1325,140 @@
       `).join('');
     }
 
-    function renderBridgePosts(bridgePosts) {
-      const container = document.getElementById('bridgePosts');
-      document.getElementById('bridgeCountPill').textContent = `${bridgePosts.length} items`;
+    function countBridgePostsByCategory() {
+      return state.bridgePosts.reduce((counts, post) => {
+        const key = normalizeCategoryKey(post.category);
+        counts[key] = (counts[key] || 0) + 1;
+        return counts;
+      }, {});
+    }
 
-      if (!bridgePosts.length) {
-        container.innerHTML = '<div class="empty">No bridge posts mapped out yet.</div>';
+    function renderBridgeFilters() {
+      const container = document.getElementById('bridgeFilters');
+      const counts = countBridgePostsByCategory();
+      const keys = categoryOrder();
+      const allActive = state.activeCategories.size === keys.length && keys.length > 0;
+      const visibleCount = filteredBridgePosts().length;
+
+      container.innerHTML = `
+        <div class="bridge-filter-label">Filter by category</div>
+        <div class="bridge-filter-row">
+          <button class="filter-chip is-all ${allActive ? 'is-active' : ''}" type="button" data-filter-all="true">
+            <span>All categories</span>
+            <span class="filter-chip-count">${state.bridgePosts.length}</span>
+          </button>
+          ${keys.map((key) => {
+            const meta = state.categoryMeta[key];
+            const isActive = state.activeCategories.has(key);
+            return `
+              <button class="filter-chip category-chip ${categoryClass(key)} ${isActive ? 'is-active' : ''}" type="button" data-category-filter="${escapeHtml(key)}">
+                <span>${escapeHtml(meta.label)}</span>
+                <span class="filter-chip-count">${counts[key] || 0}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+        <div class="bridge-extra">Showing ${visibleCount} of ${state.bridgePosts.length} bridge posts.</div>
+      `;
+
+      container.querySelector('[data-filter-all]')?.addEventListener('click', () => {
+        state.activeCategories = new Set(keys);
+        renderBridgeSection();
+      });
+
+      container.querySelectorAll('[data-category-filter]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const key = button.dataset.categoryFilter;
+          if (state.activeCategories.has(key)) {
+            state.activeCategories.delete(key);
+          } else {
+            state.activeCategories.add(key);
+          }
+          renderBridgeSection();
+        });
+      });
+    }
+
+    function renderBridgeLegend() {
+      const container = document.getElementById('bridgeLegend');
+      const keys = categoryOrder();
+      container.innerHTML = keys.map((key) => {
+        const meta = state.categoryMeta[key];
+        const isActive = state.activeCategories.has(key);
+        return `
+          <article class="legend-card ${categoryClass(key)} ${isActive ? '' : 'is-muted'}">
+            ${categoryBadge(key)}
+            <div class="legend-copy">${escapeHtml(meta.meaning || '')}</div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderBridgePosts(posts) {
+      const container = document.getElementById('bridgePosts');
+      const orderedKeys = categoryOrder();
+      const groups = orderedKeys
+        .map((key) => ({
+          key,
+          meta: state.categoryMeta[key],
+          items: posts.filter((post) => normalizeCategoryKey(post.category) === key)
+        }))
+        .filter((group) => group.items.length);
+
+      const total = state.bridgePosts.length;
+      document.getElementById('bridgeCountPill').textContent = posts.length === total ? `${total} items` : `${posts.length} of ${total}`;
+
+      if (!posts.length) {
+        container.innerHTML = '<div class="empty">No bridge posts match this filter. Click a category back on.</div>';
         return;
       }
 
-      container.innerHTML = bridgePosts.map((post) => `
-        <article class="bridge-card">
-          <div class="bridge-top">
-            <div class="date-chip">${escapeHtml(formatDateValue(post.date))}</div>
-            ${badge(post.status)}
+      container.innerHTML = groups.map((group) => `
+        <section class="bridge-group">
+          <div class="bridge-group-head">
+            <div>
+              <div class="bridge-group-title-row">
+                ${categoryBadge(group.key)}
+                <h3 class="bridge-group-title">${escapeHtml(group.meta.title || titleCaseFromKey(group.key))}</h3>
+              </div>
+              <p class="bridge-group-note">${escapeHtml(group.meta.meaning || '')}</p>
+            </div>
+            <div class="pill">${group.items.length} posts</div>
           </div>
-          <h3 class="bridge-title">${escapeHtml(post['topic angle'] || 'Untitled')}</h3>
-          <div class="bridge-meta">
-            <span>${escapeHtml(String(post.status || '').toLowerCase())}</span>
-            <span>${escapeHtml(post.date || '')}</span>
+          <div class="bridge-group-list">
+            ${group.items.map((post) => `
+              <article class="bridge-card">
+                <div class="bridge-top">
+                  <div>
+                    <div class="date-chip">${escapeHtml(formatDateValue(post.date))}</div>
+                    <div class="bridge-extra">${escapeHtml(post.slot ? `slot ${post.slot}` : 'bridge post')}</div>
+                  </div>
+                  <div class="bridge-badges">
+                    ${categoryBadge(post.category)}
+                    ${badge(post.status)}
+                  </div>
+                </div>
+                <h3 class="bridge-title">${escapeHtml(post['topic angle'] || 'Untitled')}</h3>
+                <div class="bridge-meta">
+                  <span>${escapeHtml(post.date || '')}</span>
+                  <span>${escapeHtml(String(post.status || '').toLowerCase())}</span>
+                </div>
+              </article>
+            `).join('')}
           </div>
-        </article>
+        </section>
       `).join('');
+    }
+
+    function renderBridgeSection() {
+      renderBridgeFilters();
+      renderBridgeLegend();
+      renderBridgePosts(filteredBridgePosts());
+    }
+
+    function bridgeMarkerLabel(category) {
+      const key = normalizeCategoryKey(category);
+      return (state.categoryMeta[key]?.short || categoryFallbacks[key]?.short || 'B').slice(0, 4);
     }
 
     function buildScheduleItems(articles, bridgePosts) {
@@ -1012,7 +1468,11 @@
           kind: 'article',
           label: `article ${article['#'] || ''}`,
           title: article.title || 'Untitled article',
-          status: article.status || 'unknown'
+          status: article.status || 'unknown',
+          markerLabel: `A${article['#'] || ''}`,
+          markerClass: 'is-article',
+          category: null,
+          slot: null
         }))
         .filter((item) => item.dateKey);
 
@@ -1020,9 +1480,13 @@
         .map((post) => ({
           dateKey: parseDateKey(post.date),
           kind: 'bridge',
-          label: 'bridge',
+          label: post.slot ? `slot ${post.slot}` : 'bridge post',
           title: post['topic angle'] || 'Untitled bridge post',
-          status: post.status || 'unknown'
+          status: post.status || 'unknown',
+          markerLabel: bridgeMarkerLabel(post.category),
+          markerClass: `is-bridge-category ${categoryClass(post.category)}`,
+          category: normalizeCategoryKey(post.category),
+          slot: post.slot || null
         }))
         .filter((item) => item.dateKey);
 
@@ -1054,9 +1518,7 @@
     }
 
     function markerHtml(item) {
-      const kindClass = item.kind === 'article' ? 'is-article' : 'is-bridge';
-      const shortLabel = item.kind === 'article' ? `A${String(item.label).replace('article ', '')}` : 'B';
-      return `<span class="day-marker ${kindClass}">${escapeHtml(shortLabel)}</span>`;
+      return `<span class="day-marker ${escapeHtml(item.markerClass)}">${escapeHtml(item.markerLabel)}</span>`;
     }
 
     function renderMonth(monthDate) {
@@ -1115,12 +1577,15 @@
       container.innerHTML = items.map((item) => `
         <article class="schedule-card">
           <div class="schedule-top">
-            <div class="schedule-chip">${escapeHtml(item.kind === 'article' ? item.label : 'bridge post')}</div>
-            ${badge(item.status)}
+            <div class="schedule-chip">${escapeHtml(item.kind === 'article' ? item.label : item.label || 'bridge post')}</div>
+            <div class="bridge-badges">
+              ${item.kind === 'bridge' ? categoryBadge(item.category) : ''}
+              ${badge(item.status)}
+            </div>
           </div>
           <h3 class="schedule-title">${escapeHtml(item.title)}</h3>
           <div class="schedule-meta">
-            <span>${escapeHtml(item.kind)}</span>
+            <span>${escapeHtml(item.kind === 'bridge' && item.slot ? `bridge slot ${item.slot}` : item.kind)}</span>
             <span>${escapeHtml(formatDateValue(item.dateKey))}</span>
           </div>
         </article>
@@ -1187,10 +1652,14 @@
           commitTime: commits?.[0]?.commit?.committer?.date || null
         };
 
-        const { articles, bridgePosts } = parseCalendar(markdown);
+        const { articles, bridgePosts, categoryDefinitions } = parseCalendar(markdown);
+        state.articles = articles;
+        state.bridgePosts = bridgePosts;
+        state.categoryMeta = categoryDefinitions;
+        syncActiveCategories();
         renderStats(articles, bridgePosts);
         renderArticles(articles);
-        renderBridgePosts(bridgePosts);
+        renderBridgeSection();
         renderCalendar(articles, bridgePosts);
         document.getElementById('updatedLabel').textContent = formatUpdatedLabel(meta);
       } catch (error) {
@@ -1206,5 +1675,6 @@
     document.getElementById('refreshButton').addEventListener('click', loadCalendar);
     loadCalendar();
   </script>
+
 </body>
 </html>

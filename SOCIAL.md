@@ -2,7 +2,7 @@
 
 Cadence:
 - Long articles (substack canonical → linkedin pulse → x article): every ~10 days, monday 10am PT
-- Bridge posts (x + linkedin feed): mon + thu, drafted day-of for amy approval
+- Bridge posts (x + linkedin feed): 3x/week mon + wed + fri, drafted day-of for amy approval
 
 Voice: lowercase, punchy, hot-take opener, personal anecdote, manufacturing/softgoods/design lens. No emoji.
 
@@ -19,16 +19,21 @@ Voice: lowercase, punchy, hot-take opener, personal anecdote, manufacturing/soft
 | 8 | Gaskets and the geometry of sealing | queued | ~2026-06-29 |
 
 ## Bridge posts queue
-Drafted twice weekly (mon + thu). Format: 1 hot take + 1 specific anecdote, ~2-4 short paragraphs. Always teases or extends from the most recent article.
+Drafted 3x/week (mon + wed + fri). Format: 1 hot take + 1 specific anecdote, ~2-4 short paragraphs. ~280 chars for X, slightly longer for LinkedIn. Always teases or extends from the most recent article.
 
 | Date | Topic angle | Status |
 |---|---|---|
-| 2026-04-23 thu | softgoods follow-up: stretch isn't a property, it's a behavior | pending |
-| 2026-04-27 mon | knit vs woven: when to use each | pending |
-| 2026-04-30 thu | pre-launch tease for adhesives article | pending |
+| 2026-04-22 wed | softgoods follow-up: stretch isn't a property, it's a behavior | pending |
+| 2026-04-24 fri | knit vs woven: when to use each | pending |
+| 2026-04-27 mon | seam allowance: where designs break in production | pending |
+| 2026-04-29 wed | dye lot variance, why your prototype doesn't match | pending |
+| 2026-05-01 fri | pre-launch tease for adhesives article | pending |
 | 2026-05-04 mon | adhesives follow-up: thermosets vs thermoplastics | pending |
-| 2026-05-07 thu | bondline thickness: the hidden spec | pending |
+| 2026-05-06 wed | bondline thickness: the hidden spec | pending |
+| 2026-05-08 fri | surface prep matters more than the glue | pending |
 | 2026-05-11 mon | tolerance stack tease | pending |
+| 2026-05-13 wed | the 0.1mm that ruined my first injection mold | pending |
+| 2026-05-15 fri | RSS vs MMC, the GD&T decision nobody explains | pending |
 
 ## Themes & angles to mine
 - specific failure modes (snag, weave creep, seam slippage, dye migration)

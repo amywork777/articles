@@ -673,6 +673,195 @@
       line-height: 1.5;
     }
 
+    .clickable-card {
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      appearance: none;
+      font: inherit;
+      color: inherit;
+    }
+
+    .modal-open {
+      overflow: hidden;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      background: rgba(45, 42, 38, 0.26);
+      backdrop-filter: blur(12px);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .modal-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-shell {
+      width: min(860px, 100%);
+      max-height: min(88vh, 920px);
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,246,237,0.96));
+      box-shadow: 0 28px 80px rgba(66, 47, 29, 0.18);
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+    }
+
+    .modal-head {
+      padding: 22px 22px 16px;
+      border-bottom: 1px solid rgba(77, 58, 38, 0.08);
+      display: grid;
+      gap: 12px;
+      background: linear-gradient(180deg, rgba(255, 250, 243, 0.94), rgba(255,255,255,0.88));
+    }
+
+    .modal-topline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .modal-title-wrap {
+      display: grid;
+      gap: 6px;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .modal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .modal-path {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      color: rgba(45, 42, 38, 0.62);
+      background: rgba(77, 58, 38, 0.05);
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      border-radius: 999px;
+      padding: 8px 12px;
+      width: fit-content;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .modal-close {
+      appearance: none;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+      background: rgba(255,255,255,0.82);
+      color: var(--muted);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font: inherit;
+      font-size: 1.2rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .modal-close:hover {
+      background: rgba(255,255,255,0.96);
+    }
+
+    .modal-body {
+      overflow: auto;
+      padding: 22px;
+    }
+
+    .modal-loading,
+    .modal-empty {
+      border-radius: 24px;
+      padding: 22px;
+      border: 1px dashed rgba(77, 58, 38, 0.14);
+      background: rgba(255,255,255,0.72);
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .modal-empty {
+      color: rgba(116, 108, 99, 0.92);
+    }
+
+    .modal-prose {
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .modal-prose h2,
+    .modal-prose h3,
+    .modal-prose h4 {
+      font-family: 'Fraunces', serif;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
+      line-height: 1.15;
+    }
+
+    .modal-prose h2 { font-size: 1.9rem; }
+    .modal-prose h3 { font-size: 1.45rem; margin-top: 24px; }
+    .modal-prose h4 { font-size: 1.15rem; margin-top: 18px; }
+    .modal-prose p,
+    .modal-prose ul,
+    .modal-prose ol,
+    .modal-code {
+      margin: 0 0 16px;
+    }
+
+    .modal-prose ul,
+    .modal-prose ol {
+      padding-left: 1.3rem;
+    }
+
+    .modal-prose code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.92em;
+      background: rgba(77, 58, 38, 0.06);
+      border-radius: 8px;
+      padding: 0.15em 0.35em;
+    }
+
+    .modal-prose a {
+      color: #74522d;
+    }
+
+    .modal-code {
+      overflow: auto;
+      padding: 16px;
+      border-radius: 22px;
+      background: #fffaf4;
+      border: 1px solid rgba(77, 58, 38, 0.08);
+    }
+
+    .modal-code code {
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      display: block;
+      white-space: pre-wrap;
+      line-height: 1.65;
+    }
+
     .calendar-panel {
       display: grid;
       gap: 18px;
@@ -916,6 +1105,13 @@
       }
 
       .updated { text-align: left; }
+      .modal-overlay { padding: 14px; }
+      .modal-shell { max-height: 92vh; border-radius: 24px; }
+      .modal-head,
+      .modal-body { padding: 18px; }
+      .modal-topline { align-items: flex-start; }
+      .modal-title { font-size: 1.5rem; }
+      .modal-path { white-space: normal; }
       .calendar-day { min-height: 84px; padding: 8px; }
       .day-number { font-size: 1rem; }
       .day-markers { gap: 4px; }
@@ -1021,17 +1217,41 @@
     </section>
   </main>
 
+  <div id="detailModal" class="modal-overlay" hidden>
+    <div class="modal-shell" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+      <div class="modal-head">
+        <div class="modal-topline">
+          <div class="modal-title-wrap">
+            <div id="detailModalKicker" class="instructions-kicker">draft preview</div>
+            <h2 id="detailModalTitle" class="modal-title">Loading…</h2>
+          </div>
+          <button id="detailModalClose" class="modal-close" type="button" aria-label="Close">✕</button>
+        </div>
+        <div id="detailModalMeta" class="modal-meta"></div>
+        <div id="detailModalPath" class="modal-path"></div>
+      </div>
+      <div class="modal-body">
+        <div id="detailModalContent"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const state = {
       markdownUrl: 'https://raw.githubusercontent.com/amywork777/articles/main/SOCIAL.md',
       commitsUrl: 'https://api.github.com/repos/amywork777/articles/commits?path=SOCIAL.md&per_page=1',
+      repoRawBase: 'https://raw.githubusercontent.com/amywork777/articles/main/',
+      contentsApiBase: 'https://api.github.com/repos/amywork777/articles/contents/',
       selectedDate: null,
       scheduleItems: [],
       articles: [],
       bridgePosts: [],
       categoryMeta: {},
       activeCategories: new Set(),
-      filtersInitialized: false
+      filtersInitialized: false,
+      itemRegistry: {},
+      folderCache: {},
+      modalRequestId: 0
     };
 
     const statusClassMap = {
@@ -1041,6 +1261,8 @@
       pending: 'badge-pending',
       posted: 'badge-posted'
     };
+
+    const stopwords = new Set(['the', 'a', 'an', 'and', 'or', 'to', 'of', 'your', 'my', 'is', 'are', 'why', 'what', 'how', 'than', 'with', 'for', 'that', 'this', 'you']);
 
     const categoryFallbacks = {
       MFG_HOT_TAKE: {
@@ -1139,6 +1361,20 @@
         .join(' ');
     }
 
+    function slugify(value = '') {
+      return String(value || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .replace(/-{2,}/g, '-');
+    }
+
+    function comparableTokens(value = '') {
+      return slugify(value)
+        .split('-')
+        .filter((token) => token && !stopwords.has(token));
+    }
+
     function parseCategoryDefinitions(markdown) {
       const section = extractSection(markdown, 'Post categories');
       const parsed = {};
@@ -1160,15 +1396,26 @@
       return parsed;
     }
 
-    function normalizeBridgePost(post = {}) {
+    function normalizeBridgePost(post = {}, index = 0) {
       const normalizedCategory = normalizeCategoryKey(post.category || '');
+      const dateKey = parseDateKey(post.date || '');
       return {
         ...post,
         date: post.date || '',
         slot: post.slot || '',
         category: normalizedCategory,
         'topic angle': post['topic angle'] || post.topic || post.title || '',
-        status: post.status || 'unknown'
+        status: post.status || 'unknown',
+        _kind: 'bridge',
+        _id: `bridge-${dateKey || index}`
+      };
+    }
+
+    function normalizeArticle(article = {}, index = 0) {
+      return {
+        ...article,
+        _kind: 'article',
+        _id: `article-${article['#'] || index}`
       };
     }
 
@@ -1201,7 +1448,7 @@
     function parseCalendar(markdown) {
       const articlesSection = extractSection(markdown, 'Articles queue');
       const bridgeSection = extractSection(markdown, 'Bridge posts queue');
-      const articles = parseTable(articlesSection);
+      const articles = parseTable(articlesSection).map(normalizeArticle);
       const bridgePosts = parseTable(bridgeSection).map(normalizeBridgePost);
       const categoryDefinitions = buildCategoryMeta(parseCategoryDefinitions(markdown), bridgePosts);
       return { articles, bridgePosts, categoryDefinitions };
@@ -1271,6 +1518,13 @@
       state.activeCategories = new Set([...state.activeCategories].filter((key) => keys.includes(key)));
     }
 
+    function rebuildItemRegistry() {
+      state.itemRegistry = {};
+      [...state.articles, ...state.bridgePosts].forEach((item) => {
+        state.itemRegistry[item._id] = item;
+      });
+    }
+
     function renderStats(articles, bridgePosts) {
       const liveCount = articles.filter((item) => item.status?.toLowerCase() === 'live').length;
       const draftedCount = articles.filter((item) => item.status?.toLowerCase() === 'drafted').length;
@@ -1311,7 +1565,7 @@
       }
 
       container.innerHTML = articles.map((article) => `
-        <article class="article-card">
+        <button class="article-card clickable-card" type="button" data-open-detail="${escapeHtml(article._id)}">
           <div class="article-top">
             <div class="index-chip">Article ${escapeHtml(article['#'] || '')}</div>
             ${badge(article.status)}
@@ -1319,9 +1573,9 @@
           <h3 class="article-title">${escapeHtml(article.title || 'Untitled')}</h3>
           <div class="article-meta">
             <span>${escapeHtml(formatDateValue(article['publish date']))}</span>
-            <span>${escapeHtml(String(article.status || '').toLowerCase())}</span>
+            <span>open draft</span>
           </div>
-        </article>
+        </button>
       `).join('');
     }
 
@@ -1427,7 +1681,7 @@
           </div>
           <div class="bridge-group-list">
             ${group.items.map((post) => `
-              <article class="bridge-card">
+              <button class="bridge-card clickable-card" type="button" data-open-detail="${escapeHtml(post._id)}">
                 <div class="bridge-top">
                   <div>
                     <div class="date-chip">${escapeHtml(formatDateValue(post.date))}</div>
@@ -1441,9 +1695,9 @@
                 <h3 class="bridge-title">${escapeHtml(post['topic angle'] || 'Untitled')}</h3>
                 <div class="bridge-meta">
                   <span>${escapeHtml(post.date || '')}</span>
-                  <span>${escapeHtml(String(post.status || '').toLowerCase())}</span>
+                  <span>open draft</span>
                 </div>
-              </article>
+              </button>
             `).join('')}
           </div>
         </section>
@@ -1472,7 +1726,8 @@
           markerLabel: `A${article['#'] || ''}`,
           markerClass: 'is-article',
           category: null,
-          slot: null
+          slot: null,
+          itemId: article._id
         }))
         .filter((item) => item.dateKey);
 
@@ -1486,7 +1741,8 @@
           markerLabel: bridgeMarkerLabel(post.category),
           markerClass: `is-bridge-category ${categoryClass(post.category)}`,
           category: normalizeCategoryKey(post.category),
-          slot: post.slot || null
+          slot: post.slot || null,
+          itemId: post._id
         }))
         .filter((item) => item.dateKey);
 
@@ -1575,7 +1831,7 @@
       }
 
       container.innerHTML = items.map((item) => `
-        <article class="schedule-card">
+        <button class="schedule-card clickable-card" type="button" data-open-detail="${escapeHtml(item.itemId)}">
           <div class="schedule-top">
             <div class="schedule-chip">${escapeHtml(item.kind === 'article' ? item.label : item.label || 'bridge post')}</div>
             <div class="bridge-badges">
@@ -1586,9 +1842,9 @@
           <h3 class="schedule-title">${escapeHtml(item.title)}</h3>
           <div class="schedule-meta">
             <span>${escapeHtml(item.kind === 'bridge' && item.slot ? `bridge slot ${item.slot}` : item.kind)}</span>
-            <span>${escapeHtml(formatDateValue(item.dateKey))}</span>
+            <span>open draft</span>
           </div>
-        </article>
+        </button>
       `).join('');
     }
 
@@ -1624,6 +1880,200 @@
       box.classList.toggle('show', Boolean(message));
     }
 
+    function renderInlineMarkdown(text = '') {
+      let html = escapeHtml(text);
+      html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
+      html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      html = html.replace(/(^|[^*])\*(?!\s)(.+?)(?<!\s)\*/g, '$1<em>$2</em>');
+      return html;
+    }
+
+    function renderMarkdownChunk(chunk = '') {
+      const blocks = chunk
+        .split(/\n{2,}/)
+        .map((block) => block.trim())
+        .filter(Boolean);
+
+      return blocks.map((block) => {
+        if (/^###\s+/.test(block)) return `<h4>${renderInlineMarkdown(block.replace(/^###\s+/, ''))}</h4>`;
+        if (/^##\s+/.test(block)) return `<h3>${renderInlineMarkdown(block.replace(/^##\s+/, ''))}</h3>`;
+        if (/^#\s+/.test(block)) return `<h2>${renderInlineMarkdown(block.replace(/^#\s+/, ''))}</h2>`;
+
+        const lines = block.split('\n');
+        if (lines.every((line) => /^\s*[-*]\s+/.test(line))) {
+          return `<ul>${lines.map((line) => `<li>${renderInlineMarkdown(line.replace(/^\s*[-*]\s+/, ''))}</li>`).join('')}</ul>`;
+        }
+        if (lines.every((line) => /^\s*\d+\.\s+/.test(line))) {
+          return `<ol>${lines.map((line) => `<li>${renderInlineMarkdown(line.replace(/^\s*\d+\.\s+/, ''))}</li>`).join('')}</ol>`;
+        }
+        return `<p>${lines.map((line) => renderInlineMarkdown(line)).join('<br>')}</p>`;
+      }).join('');
+    }
+
+    function markdownToHtml(markdown = '') {
+      const normalized = markdown.replace(/\r\n/g, '\n').trim();
+      if (!normalized) {
+        return '<div class="modal-empty">no content yet</div>';
+      }
+
+      return normalized
+        .split(/```/)
+        .map((segment, index) => {
+          if (index % 2 === 1) {
+            const cleaned = segment.replace(/^\w+\n/, '').trim();
+            return `<pre class="modal-code"><code>${escapeHtml(cleaned)}</code></pre>`;
+          }
+          return renderMarkdownChunk(segment);
+        })
+        .join('');
+    }
+
+    async function listRepoFolder(folder) {
+      if (state.folderCache[folder]) return state.folderCache[folder];
+      try {
+        const response = await fetch(`${state.contentsApiBase}${folder}`, {
+          headers: { 'Accept': 'application/vnd.github+json' }
+        });
+        if (!response.ok) throw new Error(`Could not list ${folder}`);
+        const items = await response.json();
+        state.folderCache[folder] = Array.isArray(items) ? items : [];
+      } catch (error) {
+        console.error(error);
+        state.folderCache[folder] = [];
+      }
+      return state.folderCache[folder];
+    }
+
+    async function resolveArticleDraftPath(article) {
+      const directSlug = slugify(article.slug || article.title || '');
+      const directPath = directSlug ? `drafts/${directSlug}.md` : 'drafts/.md';
+      const files = (await listRepoFolder('drafts')).filter((item) => item.type === 'file' && item.name.endsWith('.md'));
+      if (files.some((item) => item.path === directPath || item.name === `${directSlug}.md`)) {
+        return directPath;
+      }
+
+      const number = String(article['#'] || '').trim();
+      const prefix = number ? `${number.padStart(2, '0')}-` : '';
+      const titleTokens = comparableTokens(article.title || '');
+
+      const scored = files.map((item) => {
+        let score = 0;
+        const name = item.name.toLowerCase();
+        if (directSlug && name === `${directSlug}.md`) score += 400;
+        if (prefix && name.startsWith(prefix)) score += 1000;
+        titleTokens.forEach((token) => {
+          if (name.includes(token)) score += 12;
+        });
+        return { path: item.path, score };
+      }).sort((a, b) => b.score - a.score);
+
+      if (scored[0] && scored[0].score > 0) return scored[0].path;
+      return directPath;
+    }
+
+    async function resolveDraftPath(item) {
+      if (!item) return null;
+      if (item._kind === 'bridge') {
+        const dateKey = parseDateKey(item.date);
+        return dateKey ? `bridge-drafts/${dateKey}.md` : null;
+      }
+      return resolveArticleDraftPath(item);
+    }
+
+    function showModalState({ kicker, title, meta, html, path }) {
+      document.getElementById('detailModalKicker').textContent = kicker;
+      document.getElementById('detailModalTitle').textContent = title;
+      document.getElementById('detailModalMeta').innerHTML = meta || '';
+      document.getElementById('detailModalPath').textContent = path || '';
+      document.getElementById('detailModalContent').innerHTML = html;
+    }
+
+    function openModalShell() {
+      const overlay = document.getElementById('detailModal');
+      overlay.hidden = false;
+      (window.requestAnimationFrame || ((fn) => setTimeout(fn, 0)))(() => overlay.classList.add('is-open'));
+      document.body.classList.add('modal-open');
+    }
+
+    function closeDetailModal() {
+      const overlay = document.getElementById('detailModal');
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('modal-open');
+      state.modalRequestId += 1;
+      setTimeout(() => {
+        if (!overlay.classList.contains('is-open')) overlay.hidden = true;
+      }, 180);
+    }
+
+    async function openDetailModal(itemId) {
+      const item = state.itemRegistry[itemId];
+      if (!item) return;
+      const requestId = ++state.modalRequestId;
+      const meta = [
+        item._kind === 'bridge' ? categoryBadge(item.category) : `<span class="badge badge-default">article</span>`,
+        badge(item.status)
+      ].join('');
+      showModalState({
+        kicker: item._kind === 'bridge' ? 'bridge draft' : 'article draft',
+        title: item._kind === 'bridge' ? item['topic angle'] || 'Untitled bridge post' : item.title || 'Untitled article',
+        meta,
+        html: '<div class="modal-loading">loading draft…</div>',
+        path: ''
+      });
+      openModalShell();
+
+      const path = await resolveDraftPath(item);
+      if (requestId !== state.modalRequestId) return;
+      const pathLabel = path || 'no draft path';
+
+      if (!path) {
+        showModalState({
+          kicker: item._kind === 'bridge' ? 'bridge draft' : 'article draft',
+          title: item._kind === 'bridge' ? item['topic angle'] || 'Untitled bridge post' : item.title || 'Untitled article',
+          meta,
+          html: '<div class="modal-empty">no content yet</div>',
+          path: pathLabel
+        });
+        return;
+      }
+
+      try {
+        const response = await fetch(`${state.repoRawBase}${path}?ts=${Date.now()}`, { cache: 'no-store' });
+        if (requestId !== state.modalRequestId) return;
+        if (response.status === 404) {
+          showModalState({
+            kicker: item._kind === 'bridge' ? 'bridge draft' : 'article draft',
+            title: item._kind === 'bridge' ? item['topic angle'] || 'Untitled bridge post' : item.title || 'Untitled article',
+            meta,
+            html: '<div class="modal-empty">no content yet</div>',
+            path
+          });
+          return;
+        }
+        if (!response.ok) throw new Error(`Could not fetch ${path}`);
+        const markdown = await response.text();
+        if (requestId !== state.modalRequestId) return;
+        showModalState({
+          kicker: item._kind === 'bridge' ? 'bridge draft' : 'article draft',
+          title: item._kind === 'bridge' ? item['topic angle'] || 'Untitled bridge post' : item.title || 'Untitled article',
+          meta,
+          html: `<div class="modal-prose">${markdownToHtml(markdown)}</div>`,
+          path
+        });
+      } catch (error) {
+        console.error(error);
+        if (requestId !== state.modalRequestId) return;
+        showModalState({
+          kicker: item._kind === 'bridge' ? 'bridge draft' : 'article draft',
+          title: item._kind === 'bridge' ? item['topic angle'] || 'Untitled bridge post' : item.title || 'Untitled article',
+          meta,
+          html: '<div class="modal-empty">could not load draft right now</div>',
+          path
+        });
+      }
+    }
+
     async function loadCalendar() {
       const refreshButton = document.getElementById('refreshButton');
       refreshButton.disabled = true;
@@ -1656,6 +2106,7 @@
         state.articles = articles;
         state.bridgePosts = bridgePosts;
         state.categoryMeta = categoryDefinitions;
+        rebuildItemRegistry();
         syncActiveCategories();
         renderStats(articles, bridgePosts);
         renderArticles(articles);
@@ -1672,9 +2123,24 @@
       }
     }
 
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-open-detail]');
+      if (trigger) {
+        openDetailModal(trigger.dataset.openDetail);
+      }
+    });
+
+    document.getElementById('detailModal').addEventListener('click', (event) => {
+      if (event.target === event.currentTarget) closeDetailModal();
+    });
+    document.getElementById('detailModalClose').addEventListener('click', closeDetailModal);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeDetailModal();
+    });
     document.getElementById('refreshButton').addEventListener('click', loadCalendar);
     loadCalendar();
   </script>
+
 
 </body>
 </html>

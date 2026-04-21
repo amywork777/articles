@@ -35,7 +35,7 @@ Drafted 3x/week (mon + wed + fri). Format: ~280 chars for X, slightly longer for
 | 2026-04-27 mon | 3 | AI_CAD | ai won't replace cad designers, just ones who don't know mfg | drafted |
 | 2026-04-29 wed | 4 | MFG_HOT_TAKE | render vs working part = 200 emails with the factory | drafted |
 | 2026-05-01 fri | 5 | MFG_HOT_TAKE | DFM is a habit, not a checklist | drafted |
-| 2026-05-04 mon | 6 | AI_CAD | AI can't generate parts because it doesn't know what's manufacturable | pending |
+| 2026-05-04 mon | 6 | ARTICLE_TIE_IN | adhesives article post-launch boost / key takeaway | pending |
 | 2026-05-06 wed | 7 | MFG_HOT_TAKE | bondline thickness: the hidden spec nobody dimensions | pending |
 | 2026-05-08 fri | 8 | PHOTO | factory floor / vizcom render shot with one-line caption | pending |
 | 2026-05-11 mon | 9 | MFG_HOT_TAKE | the 0.1mm that ruined my first injection mold | pending |

@@ -30,7 +30,7 @@ Drafted 3x/week (mon + wed + fri). Format: ~280 chars for X, slightly longer for
 
 | Date | Slot | Category | Topic angle | Status |
 |---|---|---|---|---|
-| 2026-04-22 wed | 1 | ARTICLE_TIE_IN | softgoods follow-up: stretch isn't a property, it's a behavior | pending |
+| 2026-04-22 wed | 1 | ARTICLE_TIE_IN | softgoods follow-up: stretch isn't a property, it's a behavior | POSTED [X](https://x.com/amypretzel/status/2046993959927390646) [LI](https://www.linkedin.com/feed/update/urn:li:share:7452760186898890752) |
 | 2026-04-24 fri | 2 | MFG_HOT_TAKE | seam allowance: where beautiful designs die in production | pending |
 | 2026-04-27 mon | 3 | AI_CAD | ai won't replace cad designers, just ones who don't know mfg | drafted |
 | 2026-04-29 wed | 4 | MFG_HOT_TAKE | render vs working part = 200 emails with the factory | drafted |

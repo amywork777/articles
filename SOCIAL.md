@@ -13,7 +13,7 @@ Voice: lowercase, punchy, hot-take opener, personal anecdote, manufacturing/soft
 | 2 | Adhesives are the invisible discipline holding your product together | drafted | ~2026-04-30 |
 | 3 | Tolerance stack-up: why 0.1mm matters | queued | ~2026-05-10 |
 | 4 | Color matching is a nightmare nobody talks about | queued | ~2026-05-20 |
-| 5 | Hinges: the most engineered part you'll never notice | queued | ~2026-05-30 |
+| 5 | Hinges: the most engineered part you'll never notice | drafted | 2026-05-30 |
 | 6 | Packaging is product design | queued | ~2026-06-09 |
 | 7 | Foam selection 101 | queued | ~2026-06-19 |
 | 8 | Gaskets and the geometry of sealing | queued | ~2026-06-29 |

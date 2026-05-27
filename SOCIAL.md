@@ -22,7 +22,6 @@ Voice: lowercase, punchy, hot-take opener, personal anecdote, manufacturing/soft
 - **MFG_HOT_TAKE** — manufacturing pain/observation with attitude. Core voice. Best historical performance.
 - **AI_CAD** — AI x manufacturing/CAD thinking. Lands well with tech crowd.
 - **PERSONAL** — SF observations, life jokes, "overheard" moments. Underused but high engagement.
-- **PHOTO** — image-led post, can be lifestyle or factory floor. "iykyk" energy.
 - **ARTICLE_TIE_IN** — extends or teases a long article in queue.
 
 ## Bridge posts queue
@@ -37,7 +36,6 @@ Drafted 3x/week (mon + wed + fri). Format: ~280 chars for X, slightly longer for
 | 2026-05-01 fri | 5 | MFG_HOT_TAKE | DFM is a habit, not a checklist | drafted |
 | 2026-05-04 mon | 6 | ARTICLE_TIE_IN | adhesives article post-launch boost / key takeaway | pending |
 | 2026-05-06 wed | 7 | MFG_HOT_TAKE | bondline thickness: the hidden spec nobody dimensions | pending |
-| 2026-05-08 fri | 8 | PHOTO | factory floor / vizcom render shot with one-line caption | pending |
 | 2026-05-11 mon | 9 | MFG_HOT_TAKE | the 0.1mm that ruined my first injection mold | pending |
 
 ## Themes & angles to mine
